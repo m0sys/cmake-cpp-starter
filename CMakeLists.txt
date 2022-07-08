@@ -1,9 +1,22 @@
+#==========
+# Preamble
+#==========
 cmake_minimum_required(VERSION 3.17) # v3.17 enables ninja multi-config gen
-project(cmake_cpp_starter LANGUAGES CXX)
 
-# Define build types i.e. Debug|Release.
-add_executable(my_app main.cc)
-add_executable(my_app_debug main.cc)
+# TODO: add versioning
+set(PROJ_NAME cmake_cpp_starter)
+project(${PROJ_NAME} LANGUAGES CXX)
+enable_testing()
+
+#====================
+# Project Wide Setup
+#====================
+list(APPEND CMAKE_MODULE_PATH
+    ${CMAKE_CURRENT_LIST_DIR}/cmake # contains useful cmake utils
+)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED YES)
+set(CMAKE_CXX_EXTENSIONS NO)
 
 # Build type config.
 get_property(BUILDING_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
@@ -48,3 +61,20 @@ endif()
 ##        )
 ##    endif()
 ##endif()
+
+#=============================
+# Externally Provided Content
+#=============================
+add_subdirectory(deps)
+
+######################
+# Main Build Targets #
+######################
+add_subdirectory(src)
+
+#=======================================================
+# Typically needed only if we are the top level project
+#=======================================================
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+    add_subdirectory(tests)
+endif()
