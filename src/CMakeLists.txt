@@ -14,11 +14,15 @@ set_target_properties(${PROJ_NAME}_${EXE_NAME} PROPERTIES
 # Add submodules for project.
 option(${PROJ_NAME}_COFFEE "Enabling coffee lib" ON)
 option(${PROJ_NAME}_LOG "Enabling log lib" ON)
+option(${PROJ_NAME}_FACT "Enabling factorial lib" ON)
 if (${PROJ_NAME}_COFFEE)
     add_subdirectory(coffee)
 endif()
 if (${PROJ_NAME}_LOG)
     add_subdirectory(log)
+endif()
+if (${PROJ_NAME}_FACT)
+    add_subdirectory(factorial)
 endif()
 
 # Link src deps.
