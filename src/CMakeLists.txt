@@ -26,6 +26,8 @@ if (${PROJ_NAME}_FACT)
 endif()
 
 # Link src deps.
-target_link_libraries(${PROJ_NAME}_${EXE_NAME} PRIVATE fmt::fmt-header-only)
-target_link_libraries(${PROJ_NAME}_${EXE_NAME} PRIVATE spdlog::spdlog)
+target_link_libraries(${PROJ_NAME}_${EXE_NAME} PRIVATE
+    fmt::fmt-header-only
+    spdlog::spdlog
+    )
 

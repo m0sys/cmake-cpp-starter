@@ -5,7 +5,10 @@ cmake_minimum_required(VERSION 3.17) # v3.17 enables ninja multi-config gen
 
 # TODO: add versioning
 set(PROJ_NAME cmake_cpp_starter)
-project(${PROJ_NAME} LANGUAGES CXX)
+project(${PROJ_NAME}
+    VERSION 0.0.1
+    LANGUAGES CXX
+    )
 enable_testing()
 
 #====================
@@ -20,6 +23,7 @@ set(CMAKE_CXX_EXTENSIONS NO)
 
 # TODO: MAKE build type more robust/clean
 # Build type config.
+set(MY_BUILD_DIR ${CMAKE_SOURCE_DIR}/build/build_debug)
 get_property(BUILDING_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 if(BUILDING_MULTI_CONFIG)
   if(NOT CMAKE_BUILD_TYPE)
@@ -42,35 +46,14 @@ if(BUILDING_MULTI_CONFIG)
   endif()
 endif()
 
-##get_property(isMultiConfig GLOBAL
-##    PROPERTY GENERATOR_IS_MULTI_CONFIG
-##)
-##if(isMultiConfig)
-##    if(NOT "Profile" IN_LIST CMAKE_CONFIGURATION_TYPES)
-##        list(APPEND CMAKE_CONFIGURATION_TYPES Profile)
-##    endif()
-##else()
-##    set(allowedBuildTypes Debug Release Profile)
-##    set_property(CACHE CMAKE_BUILD_TYPE PROPERTY
-##        STRINGS "${allowedBuildTypes}"
-##    )
-##    if(NOT CMAKE_BUILD_TYPE)
-##        set(CMAKE_BUILD_TYPE Debug CACHE STRING "" FORCE)
-##    elseif(NOT CMAKE_BUILD_TYPE IN_LIST allowedBuildTypes)
-##        message(FATAL_ERROR
-##            "Unknown build type: ${CMAKE_BUILD_TYPE}"
-##        )
-##    endif()
-##endif()
-
 #=============================
 # Externally Provided Content
 #=============================
 add_subdirectory(deps)
 
-######################
-# Main Build Targets #
-######################
+#====================
+# Main Build Targets
+#====================
 add_subdirectory(src)
 
 #=======================================================

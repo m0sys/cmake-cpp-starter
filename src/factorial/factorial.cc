@@ -1,6 +1,15 @@
 #include "factorial.h"
-int factorial(int number)
+#include <spdlog/spdlog.h>
+
+int factorial(int num)
 {
-    return number <= 1 ? number : factorial(number - 1) * number; // fail
-    // return number <= 1 ? 1      : factorial( number - 1 ) * number;  // pass
+    // return number <= 1 ? number : factorial(number - 1) * number; // fail
+    return num <= 1 ? 1 : factorial(num - 1) * num; // pass
+}
+
+int factorial_debug(int num)
+{
+    // return number <= 1 ? number : factorial(number - 1) * number; // fail
+    spdlog::info("num: {}", num);
+    return num <= 1 ? 1 : factorial(num - 1) * num; // pass
 }

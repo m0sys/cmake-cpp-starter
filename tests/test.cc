@@ -12,3 +12,11 @@ TEST_CASE("Factorials of 1 and higher are computed (pass)", "[single-file]")
     REQUIRE(factorial(3) == 6);
     REQUIRE(factorial(10) == 3628800);
 }
+
+TEST_CASE("Factorials Debug of 1 and higher are computed (pass)", "[single-file]")
+{
+    REQUIRE(factorial_debug(1) == 1);
+    REQUIRE(factorial_debug(2) == 2);
+    REQUIRE(factorial_debug(3) == 6);
+    REQUIRE(factorial_debug(10) == 3628800);
+}
