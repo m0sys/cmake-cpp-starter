@@ -2,4 +2,4 @@
 #pragma once
 
 #include <iostream>
-#define LOG(msg) std::cout << msg << "\n";
+#define LOG(msg) std::cout << msg << "\n"

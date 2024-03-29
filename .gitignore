@@ -34,3 +34,6 @@
 # CMake 
 build/
 CMakeFiles/
+
+# Clangd LSP support.
+compile_commands.json
